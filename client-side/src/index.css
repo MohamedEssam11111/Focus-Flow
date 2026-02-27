@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 1. إعدادات السكرول بار */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+/* 2. الخلفية السوداء (الـ Track) */
+::-webkit-scrollbar-track {
+  background: #111111;
+  border-radius: 20px;
+}
+
+/* 3. الجزء المتحرك (الـ Thumb) */
+::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  /* الحدود السوداء لعمل الشكل النحيف */
+  border: 2px solid #111111; 
+
+  /* دمج النجمة الذهبية في أعلى الطرف مع الجريدينت */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23FFD700' d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E"), 
+    linear-gradient(180deg, #ff00ff 0%, #7d5fff 50%, #00d4ff 100%);
+  
+  background-repeat: no-repeat;
+  
+  /* top 0px تضمن إن النجمة تبدأ من أول بكسل في الـ thumb من فوق */
+  background-position: top 0px center, center; 
+  
+  /* حجم النجمة - جرب 10px أو 12px حسب ذوقك */
+  background-size: 11px, cover;
+}
+
+/* تأثير الـ Hover */
+::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.2);
+}   
