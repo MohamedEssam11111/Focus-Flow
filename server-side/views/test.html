@@ -137,6 +137,35 @@
         right: 35%;
         font-size: 3rem;
       }
+      .post-feild {
+        position: absolute;
+        left: 40%;
+        top: 70%;
+        z-index: 10;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .post-feild input {
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .post-feild button {
+        padding: 10px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 4px;
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+      }
+      #label {
+        text-align: left;
+        font-size: 2rem;
+      }
     </style>
   </head>
   <body>
@@ -182,6 +211,16 @@
       <div class="bottom-section">
         <div class="cactus-icon">🌵</div>
       </div>
+      <form class="post-feild" action="/posts" method="post">
+        <label id="label" for="post-title">Post Title:</label>
+        <input
+          type="text"
+          id="post-title"
+          name="title"
+          placeholder="Enter post title"
+        />
+        <button type="submit">Create Post</button>
+      </form>
     </main>
   </body>
 </html>
