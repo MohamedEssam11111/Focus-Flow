@@ -6,11 +6,18 @@ connectDB(); // Connect to MongoDB
 import Post from "./models/Post.js";
 import { fileURLToPath } from "url";
 import path from "path";
+import cors from "cors";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+app.use(
+  cors({
+    origin: "http://localhost:5000",
+    credentials: true,
+  }),
+);
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json()); // عشان نقرأ JSON من الـ requests
