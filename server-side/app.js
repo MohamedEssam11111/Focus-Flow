@@ -12,9 +12,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+
 app.use(
   cors({
-    origin: "http://localhost:5000",
+    origin: "http://localhost:5173",
     credentials: true,
   }),
 );
@@ -31,24 +32,48 @@ app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}/`);
 });
 
+//creating  posts using react & axios and saving it to MongoDB using Mongoose
 app.post("/posts", async (req, res) => {
   try {
     const newPost = new Post(req.body); // Create a new post from request body
-    await newPost
-      .save()
-      .then(() => {
-        res.redirect("/"); // Redirect back to the homepage after saving
-      })
-      .catch((err) => {
-        console.error(err);
-        alert("Error saving post: " + err.message); // Show an alert with the error message
-        res.status(400).json({ error: err.message }); // Return an error message with a 400 status
-      });
+    await newPost.save();
+    res.status(201).json(newPost);
   } catch (err) {
     console.error(err);
-    res.status(400).json({ error: err.message }); // Return an error message with a 400 status
+    res.status(400).json({ error: err.message });
   }
 });
+
+//reading  posts using react & axios and saving it to MongoDB using Mongoose
+app.get("/posts", async (req, res) => {
+  try {
+    const posts = await Post.find();
+    res.status(200).json(posts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+//posting data using html form and saving it to MongoDB using Mongoose
+// app.post("/posts", async (req, res) => {
+//   try {
+//     const newPost = new Post(req.body); // Create a new post from request body
+//     await newPost
+//       .save()
+//       .then(() => {
+//         res.redirect("/"); // Redirect back to the homepage after saving
+//       })
+//       .catch((err) => {
+//         console.error(err);
+//         alert("Error saving post: " + err.message); // Show an alert with the error message
+//         res.status(400).json({ error: err.message }); // Return an error message with a 400 status
+//       });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(400).json({ error: err.message }); // Return an error message with a 400 status
+//   }
+// });
 // Express server setup summary:
 // 1. const app = express(); → creates an Express app instance (your server object).
 // 2. app.use(express.json()); → middleware to parse JSON in requests so req.body works.
