@@ -13,11 +13,11 @@ function App() {
   return (
     <>
       {/* Responsive Theme Bar (Mobile specific positioning handled in CSS) */}
-      <Theme />
-      {/* <IconPicker value={icon} onChange={setIcon}/> */}
+      {/* <Theme /> */}
+      {/* <IconPicker value={icon} onChange={setIcon} /> */}
       {/* <ThemeBar /> */}
-      <Milestone />
-      {/* <ToDo /> */}
+      {/* <Milestone /> */}
+      <ToDo />
       {/* <Matrix /> */}
     </>
   );
